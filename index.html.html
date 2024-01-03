@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pets App RR Encontrar-Animais-Perdidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #000;
+            background-color: #fff;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #000;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #map {
+            height: 300px;
+            margin-bottom: 16px;
+        }
+
+        .advertisement {
+            margin: 20px auto;
+        }
+
+        .by-line {
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+
+    <!-- Agrega el enlace para Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" crossorigin=""/>
+</head>
+<body>
+
+    <h1>Pets App RR Encontrar-Animais-Perdidos</h1>
+
+    <form action="/submit-form" method="post">
+        <label for="nome">01. Nome do Animal:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="perdidoEm">02. Perdido em:</label>
+        <input type="text" id="perdidoEm" name="perdidoEm" required>
+
+        <label for="foto">03. Foto do Animal:</label>
+        <input type="file" id="foto" name="foto" accept="image/*" required>
+
+        <label for="contato">04. Contato (opcional):</label>
+        <input type="text" id="contato" name="contato">
+
+        <label>05. Desejo oferecer uma recompensa (opcional):</label>
+        <input type="checkbox" id="recompensa" name="recompensa" value="true">
+
+        <label for="montoRecompensa">06. Monto da recompensa (opcional):</label>
+        <input type="text" id="montoRecompensa" name="montoRecompensa">
+
+        <label for="comentarios">07. Comentários adicionais:</label>
+        <textarea id="comentarios" name="comentarios"></textarea>
+
+        <button type="submit">[Botão de enviar]</button>
+    </form>
+
+    <!-- Mapa -->
+    <div id="map"></div>
+
+    <!-- Publicidad -->
+    <div class="advertisement">Publicidad</div>
+
+    <!-- By line -->
+    <div class="by-line">by: @graffebernal 2024</div>
+
+    <!-- Agrega el script de Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js" crossorigin=""></script>
+    <script>
+        // Agrega aquí tu código JavaScript para el mapa
+        function initMap() {
+            var mymap = L.map('map').setView([2.817, -60.675], 12); // Boa Vista, RR
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(mymap);
+        }
+
+        initMap(); // Llama a la función al cargar la página
+    </script>
+
+</body>
+</html>
